@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0,
+        user-scalable=yes" />
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="../../css/bootstrap/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../css/utils/canvas-star.css">
+    <script type="text/javascript" src="../../js/jquery/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="../../js/login/login.js"></script>
+    <script type="text/javascript" src="../../js/utils/sha1.js"></script>
+    <style>
+        #login {
+            position:absolute;
+            left:40%;
+            top:25%;
+            width:20%;
+            border-radius:5px;
+        }
+        body {
+            background: #f8f8f8;
+            text-align: center;
+            color: #fff;
+            font-family:Microsoft YaHei,Segoe UI,Tahoma,Arial,Verdana,sans-serif;
+        }
+        .my-input {
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+<div class="container" id="login">
+    <div class="row">
+        <div class="col-sm-11">
+            <h2 class="page-header">登录界面</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-sm-11">
+            <input type="text" class="form-control my-input" id="my-user-name" placeholder="请输入用户名">
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-sm-11">
+            <input type="password" class="form-control my-input" id="my-user-password" placeholder="请输入密码">
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-sm-11">
+            <input type="button" class="btn btn-info btn-lg col-sm-12" id="my-login" value="登录">
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-sm-5">
+            <a class="btn btn-info btn-sm" href="../../page/login/nologin.html">游客登陆</a>
+        </div>
+        <div class="form-group col-sm-5">
+            <a class="btn btn-info btn-sm" href="../../page/error/error.html">注册账号</a>
+        </div>
+    </div>
+</div>
+<canvas></canvas>
+<script type="text/javascript" src="../../js/utils/canvas-star.js"></script>
+</body>
+</html>

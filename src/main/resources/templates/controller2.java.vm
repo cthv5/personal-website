@@ -1,0 +1,39 @@
+package ${package.Controller};
+
+
+import org.springframework.web.bind.annotation.RequestMapping;
+
+#if(${restControllerStyle})
+import org.springframework.web.bind.annotation.RestController;
+#else
+import org.springframework.stereotype.Controller;
+#end
+#if(${superControllerClassPackage})
+import ${superControllerClassPackage};
+#end
+#if(${swagger2})
+import io.swagger.annotations.Api;
+#end
+
+/**
+ * $!{table.comment}
+ * @author ${author}
+ * @date ${cfg.localDate}
+ */
+#if(${restControllerStyle})
+@RestController
+#else
+@Controller
+#end
+##@RequestMapping("#if(${package.ModuleName})/${package.ModuleName}#end/#if(${controllerMappingHyphenStyle})${controllerMappingHyphen}#else${table.entityPath}#end")
+@RequestMapping("${cfg.lowerCasePrefix}")
+#if(${swagger2})
+@Api(tags = {"$!{table.comment}"}, description = "${table.controllerName}")
+#end
+#if(${superControllerClass})
+public class ${table.controllerName} extends ${superControllerClass} {
+#else
+public class ${table.controllerName}{
+#end
+
+}

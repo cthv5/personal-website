@@ -1,0 +1,71 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        //gradle脚本需要使用的资源
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.21.RELEASE")
+        classpath("com.bmuschko:gradle-cargo-plugin:2.3")
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'war'
+apply plugin: 'com.bmuschko.cargo'
+
+cargo {
+    containerId = 'tomcat9x'
+    port = 8088
+
+    deployable  {
+        context = 'gmweb'
+    }
+    remote {
+        hostname = ''
+        username = 'admin'
+        password = 'admin123'
+    }
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    cargo "org.codehaus.cargo:cargo-core-uberjar:1.5.1",
+            "org.codehaus.cargo:cargo-ant:1.5.1"
+    // web 和 test
+    compile("org.springframework.boot:spring-boot-starter-web")
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+    // 设置内嵌tomcat
+    providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
+    // spring boot:run
+    runtime('org.springframework.boot:spring-boot-devtools')
+    // mysql8需要高版本的
+    providedRuntime('mysql:mysql-connector-java:5.1.46')
+    // druid
+    compile('com.alibaba:druid-spring-boot-starter:1.1.10')
+    // mybatis
+//    compile('org.mybatis.spring.boot:mybatis-spring-boot-starter:2.0.1')
+    // fastjson
+    compile('com.alibaba:fastjson:1.2.31')
+    // mybatis-plus
+    compile('com.baomidou:mybatis-plus-boot-starter:3.1.1')
+    // mp3.0.3版本后需要手动添加生成器和模板
+    compile('com.baomidou:mybatis-plus-generator:3.1.1')
+    compile('org.apache.velocity:velocity-engine-core:2.1')
+    // aop
+    compile('org.springframework.boot:spring-boot-starter-aop')
+    // lombok
+    compile('org.projectlombok:lombok')
+    // redis
+    compile('org.springframework.boot:spring-boot-starter-data-redis')
+    // commons-codec
+    compile('commons-codec:commons-codec:1.6')
+    // nl.bitwalker
+    compile('nl.bitwalker:UserAgentUtils:1.2.4')
+}
